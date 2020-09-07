@@ -26,6 +26,7 @@ public class RPCClient<T> implements Serializable{
 							output.writeUTF(serviceInterface.getName());
 							output.writeUTF(method.getName());
 							output.writeObject(method.getParameters());
+							System.out.println(method.getParameters());
 							output.writeObject(args);
 							input=new ObjectInputStream(socket.getInputStream());
 							return input.readObject();

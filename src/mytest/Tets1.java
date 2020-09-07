@@ -15,7 +15,7 @@ public class Tets1 {
 class c1 implements Runnable{
 
 	@Override
-	public void run() {
+	public void run() { 
 		// TODO Auto-generated method stub
 			try {
 				for(int i=0;i<5;i++){

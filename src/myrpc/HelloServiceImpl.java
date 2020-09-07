@@ -1,6 +1,8 @@
 package myrpc;
 
-public class HelloServiceImpl implements HelloService {
+import java.io.Serializable;
+
+public class HelloServiceImpl implements HelloService ,Serializable{
 
 	@Override
 	public String sayHi(String name) {

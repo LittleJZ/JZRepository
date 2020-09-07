@@ -6,6 +6,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 
 public class Test7 {
@@ -44,10 +50,41 @@ public class Test7 {
 			String str=(String) it.next();
 			if("靳卓1".equals(str)){
 				it.remove();
-				//list.remove("靳卓1");此种同增强for循环
+				//list.remove("靳卓1");//此种同增强for循环
 			}
 		}
 		System.out.println(list);
+		ThreadLocal<String> s=new ThreadLocal<>();
+		s.set("zhangsan");
+		System.out.println(s.get());
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				for(int i=0;i<5;i++){
+					System.out.println(s.get());
+				}
+			}
+		}).start();
+		ExecutorService s7=Executors.newFixedThreadPool(2);
+		//FutureTask<V>
+		s7.execute(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		Future<?> submit = s7.submit(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	
 	}
 
 }
